@@ -1,0 +1,68 @@
+---
+layout: default
+---
+
+<div class="header">
+  <h1>LOLMac</h1>
+  <a href="https://github.com/yourusername/lolmac" class="github-stars">
+    ⭐ Star <strong>1,234</strong>
+  </a>
+  <img src="/assets/lolmac-logo.png" alt="LOLMac Logo" class="logo" />
+</div>
+
+<div class="description">
+  <p><strong>LOLMac</strong> is a curated list of macOS binaries that can be used to bypass local security restrictions in misconfigured systems.</p>
+  
+  <p>The project collects legitimate <a href="#functions">functions</a> of macOS binaries that can be abused to get the f**k break out restricted shells, escalate or maintain elevated privileges, transfer files, spawn bind and reverse shells, and facilitate the other post-exploitation tasks.</p>
+  
+  <p>It is important to note that this is <strong>not</strong> a list of exploits, and the programs listed here are not vulnerable per se, rather, LOLMac is a compendium about how to live off the land when you only have certain binaries available.</p>
+  
+  <p>LOLMac is a <a href="#collaborative">collaborative</a> project created by <a href="#">Security Researchers</a> where everyone can <a href="#contribute">contribute</a> with additional binaries and techniques.</p>
+  
+  <p>If you are looking for Windows binaries you should visit <a href="https://lolbas-project.github.io/">LOLBAS</a>.</p>
+</div>
+
+<div class="filters" id="filters">
+  <button class="filter-tag active" data-filter="all">All</button>
+  <button class="filter-tag" data-filter="execution">Code Execution</button>
+  <button class="filter-tag" data-filter="file-read">File Read</button>
+  <button class="filter-tag" data-filter="file-write">File Write</button>
+  <button class="filter-tag" data-filter="shell">Shell</button>
+  <button class="filter-tag" data-filter="reverse-shell">Reverse Shell</button>
+  <button class="filter-tag" data-filter="bind-shell">Bind Shell</button>
+  <button class="filter-tag" data-filter="library-load">Library Load</button>
+  <button class="filter-tag" data-filter="suid">SUID</button>
+  <button class="filter-tag" data-filter="sudo">Sudo</button>
+  <button class="filter-tag" data-filter="capabilities">Capabilities</button>
+  <button class="filter-tag" data-filter="limited-suid">Limited SUID</button>
+</div>
+
+<div class="search-container">
+  <input type="text" class="search-box" id="searchBox" placeholder="Search among {{ site.binaries.size }} binaries: <binary> +<function> ..." />
+</div>
+
+<table class="binaries-table" id="binariesTable">
+  <thead>
+    <tr>
+      <th>Binary</th>
+      <th>Functions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% assign sorted_bins = site.binaries | sort: "title" %}
+    {% for bin in sorted_bins %}
+    <tr class="binary-row" data-tags="{{ bin.tags | join: ' ' }}">
+      <td>
+        <a href="{{ bin.url }}" class="binary-name">{{ bin.title }}</a>
+      </td>
+      <td>
+        <div class="function-tags">
+          {% for tag in bin.tags %}
+            <span class="function-tag">{{ tag | replace: '-', ' ' | capitalize }}</span>
+          {% endfor %}
+        </div>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
