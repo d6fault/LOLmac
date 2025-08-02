@@ -29,8 +29,6 @@ Each binary entry includes:
 - 👀 Detection tips  
 - 🕵️‍♂️ OPSEC considerations
 
-Explore the [`docs/`](docs/) folder to start learning!
-
 
 ## 🤝 Contributing
 
