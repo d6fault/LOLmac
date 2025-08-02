@@ -13,7 +13,7 @@ exec: |
   osascript /path/to/malicious.scpt
 file-read: |
   # Read file using AppleScript
-  osascript -e 'do shell script "cat /User"'
+  osascript -e 'do shell script "cat "~/Library/Preferences/com.apple.finder.plist'
   
   # Read file using JXA
   osascript -l JavaScript -e 'ObjC.import("Foundation"); $.NSString.stringWithContentsOfFile("~/Library/Preferences/com.apple.finder.plist")'
