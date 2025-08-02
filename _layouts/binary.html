@@ -3,7 +3,7 @@ layout: default
 ---
 
 <div style="margin-bottom: 2rem;">
-  <a href="/" style="color: var(--primary-red); text-decoration: none;">← Back to LOLMac</a>
+  <a href="/" style="color: var(--accent-white); text-decoration: none;">← Back to LOLMac</a>
 </div>
 
 <div class="header">
@@ -22,21 +22,21 @@ layout: default
 
 {% if page.exec %}
 <div style="margin-bottom: 2rem;">
-  <h2 style="color: var(--primary-red); margin-bottom: 1rem;">Code Execution</h2>
+  <h2 style="color: var(--accent-white); margin-bottom: 1rem;">Code Execution</h2>
   <pre style="background: var(--bg-darker); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 1rem; overflow-x: auto; font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; color: var(--text-primary);"><code>{{ page.exec }}</code></pre>
 </div>
 {% endif %}
 
 {% if page["file-read"] %}
 <div style="margin-bottom: 2rem;">
-  <h2 style="color: var(--primary-red); margin-bottom: 1rem;">File Read</h2>
+  <h2 style="color: var(--accent-white); margin-bottom: 1rem;">File Read</h2>
   <pre style="background: var(--bg-darker); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 1rem; overflow-x: auto; font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; color: var(--text-primary);"><code>{{ page["file-read"] }}</code></pre>
 </div>
 {% endif %}
 
 {% if page["file-write"] %}
 <div style="margin-bottom: 2rem;">
-  <h2 style="color: var(--primary-red); margin-bottom: 1rem;">File Write</h2>
+  <h2 style="color: var(--accent-white); margin-bottom: 1rem;">File Write</h2>
   <pre style="background: var(--bg-darker); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 1rem; overflow-x: auto; font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; color: var(--text-primary);"><code>{{ page["file-write"] }}</code></pre>
 </div>
 {% endif %}

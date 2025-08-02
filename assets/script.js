@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (functionPart) {
         functionTags.forEach((tag) => {
           if (tag.getAttribute("data-tag").toLowerCase().includes(functionPart.toLowerCase())) {
-            tag.style.backgroundColor = "var(--warning-yellow)"
+            tag.style.backgroundColor = "var(--accent-white)"
             tag.style.color = "var(--bg-black)"
           }
         })
@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       functionTags.forEach((tag) => {
         if (tag.getAttribute("data-tag").toLowerCase().includes(searchLower)) {
-          tag.style.backgroundColor = "var(--warning-yellow)"
+          tag.style.backgroundColor = "var(--accent-white)"
           tag.style.color = "var(--bg-black)"
         }
       })
