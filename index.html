@@ -1,0 +1,14 @@
+---
+layout: default
+---
+
+<h1>LOLMac Binaries</h1>
+<ul>
+  {% assign sorted_bins = site.binaries | sort: "title" %}
+  {% for bin in sorted_bins %}
+    <li>
+      <a href="{{ bin.url }}">{{ bin.title }}</a>
+      <small>({{ bin.tags | join: ', ' }})</small>
+    </li>
+  {% endfor %}
+</ul>
