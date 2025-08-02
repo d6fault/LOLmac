@@ -1,7 +1,0 @@
-title: LOLMac
-description: macOS-native binaries used for offensive security
-baseurl: "" # No subpath
-collections:
-  binaries:
-    output: true
-    permalink: /:collection/:name
