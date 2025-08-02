@@ -1,6 +1,6 @@
 ---
 title: osascript
-tags: [execution, file-read, file-write]
+tags: [execution, file-read, file-write, sudo]
 description: macOS command line tool for executing AppleScript and JavaScript for Automation (JXA).
 exec: |
   # Execute AppleScript command
@@ -13,10 +13,10 @@ exec: |
   osascript /path/to/malicious.scpt
 file-read: |
   # Read file using AppleScript
-  osascript -e 'do shell script "cat /etc/passwd"'
+  osascript -e 'do shell script "cat /User"'
   
   # Read file using JXA
-  osascript -l JavaScript -e 'ObjC.import("Foundation"); $.NSString.stringWithContentsOfFile("/etc/passwd")'
+  osascript -l JavaScript -e 'ObjC.import("Foundation"); $.NSString.stringWithContentsOfFile("~/Library/Preferences/com.apple.finder.plist")'
 file-write: |
   # Write file using AppleScript
   osascript -e 'do shell script "echo malicious > /tmp/test"'
