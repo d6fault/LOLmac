@@ -1,0 +1,16 @@
+body {
+  font-family: sans-serif;
+  margin: 2rem;
+  background-color: #f9f9f9;
+  color: #333;
+}
+a {
+  text-decoration: none;
+  color: #0070f3;
+}
+code, pre {
+  background: #eee;
+  padding: 0.5em;
+  display: block;
+  overflow-x: auto;
+}
