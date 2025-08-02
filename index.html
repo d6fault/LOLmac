@@ -2,13 +2,19 @@
 layout: default
 ---
 
-<h1>LOLMac Binaries</h1>
-<ul>
+<h1>LOLMac</h1>
+<p>macOS binaries abused for offensive security (inspired by GTFOBins)</p>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem;">
   {% assign sorted_bins = site.binaries | sort: "title" %}
   {% for bin in sorted_bins %}
-    <li>
-      <a href="{{ bin.url }}">{{ bin.title }}</a>
-      <small>({{ bin.tags | join: ', ' }})</small>
-    </li>
+    <div style="background:#282a2e; padding: 1em; border-radius: 0.5em;">
+      <a href="{{ bin.url }}"><strong>{{ bin.title }}</strong></a>
+      <div style="margin-top: 0.5em;">
+        {% for tag in bin.tags %}
+          <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    </div>
   {% endfor %}
-</ul>
+</div>
