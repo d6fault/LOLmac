@@ -2,19 +2,90 @@
 layout: default
 ---
 
-<h1>LOLMac</h1>
-<p>macOS binaries abused for offensive security (inspired by GTFOBins)</p>
+<div class="header">
+  <h1>LOLMac</h1>
+  <a href="https://github.com/yourusername/lolmac" class="github-stars">
+    ⭐ Star <strong>1,234</strong>
+  </a>
+  <img src="/assets/lolmac-logo.png" alt="LOLMac Logo" class="logo" />
+</div>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem;">
-  {% assign sorted_bins = site.binaries | sort: "title" %}
-  {% for bin in sorted_bins %}
-    <div style="background:#282a2e; padding: 1em; border-radius: 0.5em;">
-      <a href="{{ bin.url }}"><strong>{{ bin.title }}</strong></a>
-      <div style="margin-top: 0.5em;">
-        {% for tag in bin.tags %}
-          <span class="tag">{{ tag }}</span>
-        {% endfor %}
-      </div>
-    </div>
-  {% endfor %}
+<div class="description">
+  <p><strong>LOLMac</strong> is a curated list of macOS binaries that can be used to bypass local security restrictions in misconfigured systems.</p>
+  
+  <p>The project collects legitimate <a href="#functions">functions</a> of macOS binaries that can be abused to get the f**k break out restricted shells, escalate or maintain elevated privileges, transfer files, spawn bind and reverse shells, and facilitate the other post-exploitation tasks.</p>
+  
+  <p>It is important to note that this is <strong>not</strong> a list of exploits, and the programs listed here are not vulnerable per se, rather, LOLMac is a compendium about how to live off the land when you only have certain binaries available.</p>
+  
+  <p>LOLMac is a <a href="#collaborative">collaborative</a> project created by <a href="#">Security Researchers</a> where everyone can <a href="#contribute">contribute</a> with additional binaries and techniques.</p>
+  
+  <p>If you are looking for Windows binaries you should visit <a href="https://lolbas-project.github.io/">LOLBAS</a>.</p>
+</div>
+
+<div class="filters" id="filters">
+  <button class="filter-tag active" data-filter="all">All</button>
+  <button class="filter-tag" data-filter="execution">Code Execution</button>
+  <button class="filter-tag" data-filter="file-read">File Read</button>
+  <button class="filter-tag" data-filter="file-write">File Write</button>
+  <button class="filter-tag" data-filter="shell">Shell</button>
+  <button class="filter-tag" data-filter="reverse-shell">Reverse Shell</button>
+  <button class="filter-tag" data-filter="bind-shell">Bind Shell</button>
+  <button class="filter-tag" data-filter="library-load">Library Load</button>
+  <button class="filter-tag" data-filter="suid">SUID</button>
+  <button class="filter-tag" data-filter="sudo">Sudo</button>
+  <button class="filter-tag" data-filter="capabilities">Capabilities</button>
+  <button class="filter-tag" data-filter="limited-suid">Limited SUID</button>
+</div>
+
+<div class="search-container">
+  <div class="search-wrapper">
+    <input type="text" class="search-box" id="searchBox" placeholder="Search binaries and functions... (e.g., 'plutil', 'file-read', or 'plutil +execution')" />
+    <button class="search-clear" id="searchClear" title="Clear search">✕</button>
+  </div>
+  <div class="search-help">
+    💡 <strong>Search tips:</strong> Use <code>binary_name</code> to find specific binaries, <code>+function</code> to search functions, or combine them like <code>plutil +file-read</code>
+  </div>
+</div>
+
+<div class="search-results-info" id="searchResults">
+  <span>Showing <strong id="visibleCount">{{ site.binaries.size }}</strong> of <strong>{{ site.binaries.size }}</strong> binaries</span>
+  <span id="activeFilters"></span>
+</div>
+
+<table class="binaries-table" id="binariesTable">
+  <thead>
+    <tr>
+      <th>Binary</th>
+      <th>Functions</th>
+    </tr>
+  </thead>
+  <tbody id="tableBody">
+    {% assign sorted_bins = site.binaries | sort: "title" %}
+    {% for bin in sorted_bins %}
+    <tr class="binary-row" data-tags="{{ bin.tags | join: ' ' }}" data-binary="{{ bin.title | downcase }}">
+      <td>
+        <a href="{{ bin.url }}" class="binary-name">{{ bin.title }}</a>
+      </td>
+      <td>
+        <div class="function-tags">
+          {% for tag in bin.tags %}
+            <span class="function-tag" data-tag="{{ tag }}">{{ tag | replace: '-', ' ' | capitalize }}</span>
+          {% endfor %}
+        </div>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<div class="no-results" id="noResults" style="display: none;">
+  <h3>No binaries found</h3>
+  <p>Try adjusting your search terms or filters</p>
+  <p><strong>Search tips:</strong></p>
+  <ul style="text-align: left; display: inline-block; margin-top: 1rem;">
+    <li>Search by binary name: <code>plutil</code></li>
+    <li>Search by function: <code>file-read</code></li>
+    <li>Combine searches: <code>plutil +execution</code></li>
+    <li>Use partial matches: <code>plu</code> will find <code>plutil</code></li>
+  </ul>
 </div>
