@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<h1>{{ page.title }}</h1>
+<p><strong>Tags:</strong> {{ page.tags | join: ', ' }}</p>
+<p>{{ page.description }}</p>
+
+{% if page.exec %}
+<h2>Code Execution</h2>
+<pre><code>{{ page.exec }}</code></pre>
+{% endif %}
+
+{% if page.file-read %}
+<h2>File Read</h2>
+<pre><code>{{ page["file-read"] }}</code></pre>
+{% endif %}
